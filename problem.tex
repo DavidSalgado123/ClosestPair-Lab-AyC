@@ -1,0 +1,25 @@
+\section{Definición del Problema}
+En clase ya se nos fue presentado el algoritmo de fuerza bruta de manera recursivo el cual nos permite encontrar el par más cercano siendo este el algoritmo escencial dentro de nuestro problema. Se espera que obtengamos un tiempo de complejidad de O(n), ya que la forma como voy a resolver el problema se basa obtener un set de coordenadas aleatorias, organizarlas y posteriormente dividirla en 2 subsets y aplicar el algoritmo de fuerza bruta dentro de cada subset y comparar sus distancias mínimas encontradas dentro de cada subset para encontrar la distancia mínima dentro de todo el set. Además, dentro del algoritmo se pondrar variables para encontrar las comparaciones y el tiempo de ejecución promedio variando la cantidad de coordenadas aleatorias. Estos resultados serán graficados utilizando Python y serán analizados para concluir si obtuve los resultados esperados. A continuación se presentara el pseudocódigo del algoritmo de Fuerza bruta. \\
+
+
+% displays the algorithm for computing the factorial recursively:
+\begin{algorithm}[H]	% uses the float package to control placement
+	\caption{Fuerza Bruta}	% a brief description or the function name
+	\begin{algorithmic}
+    \STATE $dmin \gets INF$
+    \FOR{$i = [1, N - 1]$}
+        \FOR{\texttt{j = [i+1, N - 1]}}
+            \STATE $d \gets distance(coords, i, j)$
+            \IF{$d < d_min$}
+                \STATE $first \gets i$
+                \STATE $second \gets j$
+                \STATE $dmin \gets d$
+            \ENDIF
+        \ENDFOR
+    \ENDFOR
+    \STATE $return(first, second, dmin)$
+	\end{algorithmic}
+	\label{algo:alg}	% defines a label to refer to this
+\end{algorithm} 
+
+Algoritmo~\ref{algo:alg} Algoritmo de Fuerza Bruta otorgado por el profesor para encontrar el par más cercano.

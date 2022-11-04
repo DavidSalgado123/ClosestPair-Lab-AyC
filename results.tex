@@ -1,0 +1,40 @@
+\section{Resultados}
+Como fue mencionado anteriormente, los resultados son plasmados dentro de un TXT que contiene 3 columnas. Estas 3 diferentes columnas son: Cantidad de coordenadas por ejecución, número de comparaciones promedio dentro del algoritmo por ejecución y tiempo de ejecución promedio por ejecución respectivamente. Cuando me refiero a ejecución hago referencia a las 200 repeticiones realizadas con la misma cantidad de coordenadas aleatorias dentro del set. Los resultados del TXT son plasmados a continuación: \\
+------------------------------------------------------------N---------Comparaciones-------Tiempo---------------------------------------------------
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[keepaspectratio, width = 0.4\textwidth]{Images/ResultsLab.JPG}
+\end{figure}
+
+Con los datos de la tabla se presentó la siguiente gráfica:\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[keepaspectratio, width = 0.9\textwidth]{Images/average.png}
+\end{figure}
+
+Como se puede analizar al observar la gráfica, los datos se presentan de manera casi perfectamente lineal, al iniciar se observa la dispersión de los datos pero cuando tienden al infinito se logra observar como los datos de N, comparaciones y tiempo se alinean para demostrar así el comportamiento lineal que estamos esperando como resultados. En distintas ocasiones el tiempo de ejecución o las comparaciones estan por debajo del esperado, sin embargo, esto puede suceder ya que al momento de buscar los candidatos se les ejecuta el algoritmo de fuerza bruta el cual puede variar mucho dependiendo de la distancia entre todos los puntos, por lo que si la lista de candidatos es pequeña o muy grande esta afecta el tiempo de ejecución considerablemente. 
+
+Para comprobar de manera matemática que realmente que la complejidad del algoritmo es lineal, podemos utilizar lo aprendido en clase para analizar algoritmos recursivos a través del uso de la Master Equation analizando la ecuación de complejidad de nuestro algoritmo. Esta ecuación se plantea de la siguiente forma:
+\begin{align*}
+    T(N) = 2T(N/2) + (COMB+DIV)
+\end{align*}
+Esto se plantea ya que al momento en el que nosotros hacemos una división significa que el tamaño (N) es divido en 2, siendo la razón por la cual se presenta T(N/2), y al ser 2 subsets eso significa que el algoritmo de Brute Force se tiene que ejecutar 2 veces por cada subset creado a partir de la división, presentando así el 2*T(N/2). Finalmente para saber la complejidad de COMB+DIV al analizar el código se logra ver con claridad que estos al tender al infinito tienen una complejidad constante debido ya que estos procedimientos dependen realmente en la distancia de los puntos teniendo un resultado máximo. Por ende, al final la ecuación se plantea así:
+\begin{align*}
+    T(N) = 2T(N/2) + 1
+\end{align*}
+Como fue aprendido en clase, la Master Equation ~\cite{McConnell2008} se plantea utilizando 3 variables (a , b y d), en mi caso a=2 , b=2 y d=1 por lo que en base al siguiente cuadro de decisión:
+\begin{align*}
+T(N) &= \left\{ \begin{array}{l}
+             \seq{O(N^d), if a<b^d} \\
+             \seq{O(N^dlogN), if a=b^d} \\
+             \seq{O(N^{log_b a}), if a>b^d}
+         \end{array}\right.    
+\end{align*}
+Por lo cual en mi caso se tiene en cuenta el tercer caso donde $a>b^d=2>1$ otorgando así una complejidad de: \\
+\begin{align*}
+    O(N^{log_b a})=O(N^{log_2 2})=O(N^1)   
+\end{align*}
+brindandonos la certeza de que la complejidad presentada en la gráfica si esta correcta y que la complejidad esperada tambien fue certera respecto a los resultados presentados.
+
