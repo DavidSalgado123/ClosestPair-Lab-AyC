@@ -15,10 +15,22 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
-/**
+/*
+ * Algorithms and Complexity                                  November 04, 2022
+ * IST 4310-01
+ * Prof. M. Diaz-Maldonado
  *
- * @author didsa
- */
+ * Laboratory 2: Calculating time complexity in the Find Closest Pair Algorithm
+ *
+ * Synopsis: Creates a file with n random integers, then all those arrays are transfered to an array.
+ * The program reads each element in the array and stores the unique numbers in a different array. It also counts the amount of times each
+ * unique number appears, and prints the information to the user.
+ * This process is done at least 200 times for every file with n integers in order to find the average runtime for the program given.
+ * It also forces the best case (all n integers are 0) to analize it and compare it to the average and worst case (n different numbers).
+ * 
+ * Author: David Salgado Cortés
+ * ID: 200144831
+*/
 class Point { //Define a Point class with x and y positions inside a position. 
 
         int x;
@@ -39,7 +51,7 @@ public class LabAyC10 {
     
     static int conditionalchecks;
     
-    public static void main(String[] args) {
+    public static void main(String[] args) { //This is the main block where the execution of the algorithm is developed, the first loops is to create the sets of coordinates from 500 to 1000000, in which there is another loop to repeat the process 200 times per set. The arraylists created let me know how much conditional checks were made and how much time it took for the algoritm to execute
         ArrayList<Integer> times = new ArrayList<Integer>();
         ArrayList<Integer> counters = new ArrayList<Integer>();
         ArrayList<Integer> amountn = new ArrayList<Integer>();
@@ -66,7 +78,7 @@ public class LabAyC10 {
         
     }
     
-    public static double distance(List<Point> x,int i, int j){
+    public static double distance(List<Point> x,int i, int j){ //Let me know the distance between 2 points base on their position in x and y
         int x1=x.get(i).x;
         int x2=x.get(j).x;
         int y1=x.get(i).y;
@@ -75,7 +87,7 @@ public class LabAyC10 {
         return d;
     }
     
-    public static double[] ClosestPair(int n, List<Point> x, double mind){ //Brute Force Algorithm
+    public static double[] ClosestPair(int n, List<Point> x, double mind){ //Brute Force Algorithm provided by the teacher and adapted to my algorithm
         double d_minimun=mind;
         double[] variables = new double[3];
         variables[0] = d_minimun;
@@ -157,7 +169,7 @@ public class LabAyC10 {
         return candidates;
     }
     
-    public static ArrayList<Point> RandomCoords(int n,ArrayList<Point> newCoords) { 
+    public static ArrayList<Point> RandomCoords(int n,ArrayList<Point> newCoords) { //Creates random coordinates for X and Y of values between 0 and 10000.
  
         Random rand = new Random();
         for (int i = 0; i < n; i++) {
